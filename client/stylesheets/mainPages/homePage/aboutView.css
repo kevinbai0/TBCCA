@@ -1,0 +1,135 @@
+.aboutView {
+  background-color: #E8E8E8;
+
+  display: grid;
+  width: 96vw;
+  margin-left: 2vw;
+  margin-top: 2vw;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr;
+}
+
+.about-row {
+  text-align: center;
+}
+h1 {
+  font-size: 5vw;
+  font-weight: 900;
+  color: #F74C4C;
+}
+
+.aboutView>h1 {
+  padding-left: 40px;
+}
+
+#about-description {
+  font-size: 15px;
+  font-weight: 200;
+  color: #95989A;
+
+  padding-right: 40px;
+  padding-left: 40px;
+}
+
+#button-grid {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 0.5em;
+  padding-bottom: 50px;
+  justify-items: center;
+}
+
+/* about tab button */
+.about-tab-button {
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  z-index: 0;
+}
+.tab-main {
+
+  border: 1px solid #95989A;
+  background-color: #F74C4C;
+  color: #E8E8E8;
+  border-radius: 50vw;
+  width: 100%;
+  padding-top: 100%;
+  position: relative;
+}
+.tab-main>div {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  font-size: calc(5px + 2vw);
+  height: calc(10px + 2vw);
+  margin: auto;
+}
+.tab-btn-overlay {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: rgba(0,0,0,0);
+  transition-property: background;
+  transition-duration: 0.2s;
+  transition-timing-function: linear;
+}
+
+.tab-main:hover .tab-btn-overlay {
+  background-color: rgba(0,0,0,0.5);
+}
+
+.tab-sub {
+  padding-top: 10px;
+  padding-left: 10%;
+  padding-right: 10%;
+  text-align: center;
+  color: #95989A;
+}
+
+/* adjustments when width is between 768px and 900px */
+@media only screen and (min-width: 768px) and (orientation: landscape) {
+  .aboutView {
+    grid-template-rows: 1fr 2fr;
+    grid-template-columns: 1fr;
+  }
+  #button-grid {
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr repeat(4, 2fr) 1fr;
+    grid-gap: 2em;
+  }
+  #tab-btn1 {
+    grid-column: 2/3;
+  }
+  #tab-btn2 {
+    grid-column: 3/4;
+  }
+  #tab-btn3 {
+    grid-column: 4/5;
+  }
+  #tab-btn4 {
+    grid-column: 5/6;
+  }
+
+}
+
+/* adjustments when width is over 900px */
+/*about-row and about-description*/
+@media only screen and (min-width: 900px) and (orientation: landscape) {
+  .aboutView {
+    grid-template-rows: 1fr 2fr;
+    grid-template-columns: 1fr;
+  }
+  #about-description {
+    padding-left: 0;
+    font-size: 20px;
+  }
+}

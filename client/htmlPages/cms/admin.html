@@ -1,0 +1,168 @@
+<template name="adminPage">
+  <div class="admin-page">
+    <p>{{> loginButtons}}</p>
+    {{#if currentUser}}
+      <h1>Manage Website</h1>
+      <a href="/admin/manageHome">Edit Home Page</a>
+      <a href="/admin/manageAbout">Edit About Page</a>
+      <a href="/admin/manageEvents">Manage Events</a>
+      <a href="">Manage Activities</a>
+    {{/if}}
+  </div>
+</template>
+
+<template name="adminManageHome">
+  <div class="admin-page">
+    <p>{{> loginButtons}}</p>
+    {{#if currentUser}}
+      <h1>Manage Home Page <a href="/admin" style="font-size: 12px; color: blue; font-weight: 400; float: right">Admin Main Page</a></h1>
+      {{> adminImageForm title="Home Page Main Image"}}
+      {{> adminForm title="About Section Description"}}
+      {{> adminForm title="Mission Short Description"}}
+      {{> adminForm title="History Short Description"}}
+      {{> adminForm title="Bylaws Short Description"}}
+      {{> adminForm title="Board Short Description"}}
+    {{/if}}
+  </div>
+</template>
+
+<template name="adminAboutPage">
+    <div class="admin-page">
+      <p>{{> loginButtons}}</p>
+      {{#if currentUser}}
+        <h1>Manage About Page <a href="/admin" style="font-size: 12px; color: blue; font-weight: 400; float: right">Admin Main Page</a></h1>
+        {{> adminForm title="About Us Description"}}
+        {{> adminImageForm title="About Us Page Image"}}
+        {{> adminForm title="Mission Full Description"}}
+        {{> adminForm title="Vision Full Description"}}
+        {{> adminForm title="History Full Description"}}
+        {{> adminForm title="Bylaws Full Description"}}
+
+        <p class="form-title" style="padding-top: 50px">Board Of Directors</p>
+        <button id="addNewBoardMemberBtn">Add New Member</button>
+        <!-- Form to add new board members-->
+        {{> newBoardMemberForm}}
+
+        <!--Display all current board members -->
+        <div class="board-members-section">
+          {{#each member}}
+            <div class="board-member-container">
+              <img class="form-element board-member-image" src="../{{path}}">
+              <p class="form-element board-member-name">{{firstName}} {{lastName}}</p>
+              <p class="form-element board-member-role">{{role}}</p>
+              <p class="form-element board-member-description">{{description}}</p>
+              <button class="board-button board-edit-button">Edit</button>
+              <button class="board-button board-remove-button">Remove</button>
+            </div>
+          {{/each}}
+        </div>
+      {{/if}}
+  </div>
+</template>
+
+<template name="adminEvents">
+  <div class="admin-page">
+    <p>{{> loginButtons}}</p>
+    {{#if currentUser}}
+      <h1>Manage Events<a href="/admin" style="font-size: 12px; color: blue; font-weight: 400; float: right">Admin Main Page</a></h1>
+      <button id="addNewEventBtn">Add New Event</button>
+      <table class="all-events-table">
+        <tr>
+           <th>Main Image</th> <th>Title Of Event</th> <th>Date</th> <th> Published </th>
+        </tr>
+        {{#each events}}
+          <tr>
+            <td> <img src=../{{mainImagePath}}> </td>
+            <td> {{titleOfEvent}} </td>
+            <td> {{date.month}}/{{date.day}}/{{date.year}} </td>
+            <td> {{#if published}} Yes {{else}} No {{/if}} </td>
+            <td> <button class="edit-event-btn">Edit</button> </td>
+            <td> <button class="delete-event-btn">Delete</button> </td>
+          </tr>
+        {{/each}}
+      </table>
+    {{/if}}
+  </div>
+</template>
+
+<template name="adminForm">
+  {{#if currentUser}}
+    <div class="admin-form">
+      <p class="form-element form-title">{{title}}</p>
+      <textarea id={{specialId}} class="form-element form-text-area">{{currentDescription}}</textarea>
+      <button class="form-element form-save-button">Save</button>
+    </div>
+  {{/if}}
+</template>
+
+<template name="adminImageForm">
+  {{#if currentUser}}
+    <div class="admin-form">
+      <p class="form-element form-title">{{title}}</p>
+      <input id={{specialId}} type="file" class="form-element form-file-selector">
+      <img class="form-element form-image" src="../{{currentFile}}">
+      <button class="form-element form-save-button">Add</button>
+    </div>
+  {{/if}}
+</template>
+
+<template name="newBoardMemberForm">
+  {{#if currentUser}}
+    <div id="boardMemberFormOverlay"></div>
+    <div id="board-member-form">
+      <button id="newBoardMemberExitBtn">x</button>
+      <div class="board-member-form-element">First Name: </div>
+      <input type="text" id="boardFormFirstNameInput"><br>
+      <div class="board-member-form-element">Last Name: </div>
+      <input type="text" id="boardFormLastNameInput"><br>
+      <div class="board-member-form-element">Role: </div>
+      <input type="text" id="boardFormRoleInput"><br>
+      <div class="board-member-form-element">Description: </div>
+      <input type="text" id="boardFormDescriptionInput"><br>
+      <div class="board-member-form-element">Image: </div>
+      <input type="file" id="boardFormImageInput"> <div id="boardFormPreviousImagePath"></div><br>
+      <button id="newBoardMemberAddButton">Save</button>
+    </div>
+  {{/if}}
+</template>
+
+<template name="adminEventTemplate">
+  {{#if currentUser}}
+    <div class='admin-page'>
+      <h1>New Event <a href="/admin/manageEvents" style="font-size: 12px; color: blue; font-weight: 400; float: right">Back</a></h1>
+      <form class="new-event-form">
+        <p>Title of Event</p>
+        <input id="titleOfEventInput" placeholder="title" type="text" value={{eventTitle}}>
+        <p>Date</p>
+        <input type="date" class="event-date-picker" value={{date}}>
+        <p>Article Information</p>
+        <textarea id="articleContentTextArea" placeholder="Article about the event...">{{articleContent}}</textarea>
+        <p>Media (no videos: Upload videos to Youtube)</p>
+        <input type="file" id="imageFilesEvents" multiple>
+        <div id="imagesPreviewEventContainer">
+          {{#each imageContainer}}
+            <div class="single-image-and-description-preview-container">
+              <img src="../../{{path}}">
+              <textarea class='single-image-caption' placeholder='caption'>{{caption}}</textarea>
+              <div class="set-image-as-main-btn-events-page fake-button" style="background-color: {{color}}">Set Main Image</div>
+              <div class="remove-image-btn-edit-events-page fake-button">Remove</div>
+            </div>
+          {{/each}}
+        </div>
+        <p>Video Links</p>
+        <input type="text" id="videoLinkInputField"> <span id="addVideoLinkToEventsButton" class='fake-button'>Add</span>
+        <div id="videoLinkInputsContainer">
+          {{#each links}}
+            <div class="video-link-element-container"> <span>{{this}}</span> <span class='video-link-remove-link-btn fake-button'>Remove</span> </div>
+          {{/each}}
+        </div>
+        <p>Published: </p>
+        <!-- -->
+        <label class="switch">
+          <input type="checkbox" id="eventIsPublishedCheckBox" checked={{isPublished}}>
+          <span class="slider round"></span>
+        </label>
+      </form>
+    </div>
+  {{/if}}
+</template>

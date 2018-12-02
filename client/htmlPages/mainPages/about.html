@@ -1,0 +1,54 @@
+<template name="aboutPage">
+  {{> navigationBar}}
+  <div class="about-page-container">
+    <div class="about-page-main">
+      <h1>About Us</h1>
+      <p>
+        {{aboutUsDescription}}
+      </p>
+      <img src={{aboutUsMainImage}}>
+    </div>
+    <div class="about-page-mission">
+      <h1>Mission</h1>
+      <p>
+        {{missionFullDescription}}
+      </p>
+    </div>
+    <div class="about-page-vision">
+      <h1>Vision</h1>
+      <p>
+        {{visionFullDescription}}
+      </p>
+    </div>
+    <div class="about-page-history">
+      <h1>History</h1>
+      <p>
+        {{historyFullDescription}}
+      </p>
+    </div>
+    <div class="about-page-bylaws">
+      <h1>Bylaws</h1>
+      <p>
+        {{bylawsFullDescription}}
+      </p>
+    </div>
+    <div class="about-page-board">
+      <h1>Board of Directors</h1>
+      <div class="board-of-directors-container">
+        {{#each member}}
+          <div class="board-of-directors-person" style="background: url('{{path}}'); background-size: cover;">
+            <div class="board-of-directors-person-text board-of-directors-person-name">{{firstName}} {{lastName}}</div>
+            <div class="board-of-directors-person-text board-of-directors-person-role">{{role}}</div>
+            <div class="board-of-directors-person-text board-of-directors-person-description">{{description}}</div>
+            <div class="board-of-directors-person-overlay"></div>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+  {{> pageFooter}}
+</template>
+
+<template name="boardDirectorPerson">
+
+</template>

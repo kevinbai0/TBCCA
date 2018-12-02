@@ -1,0 +1,68 @@
+<head>
+  <title>tbca</title>
+  <!-- Exo Font -->
+  <link href="https://fonts.googleapis.com/css?family=Exo:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext" rel="stylesheet">
+  <!-- Barlow Font> -->
+  <link href="https://fonts.googleapis.com/css?family=Barlow:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+
+<template name="homePage">
+  <header>
+    {{>navigationBar}}
+  </header>
+
+  <div class="homeView" style="background: url({{mainImage}}); background-size: cover; background-repeat: none;">
+    <div class="home-image-overlay"></div>
+    <h1 class="home-main-text">Thunder Bay Chinese Canadian Association</h1>
+    <p class="home-subTitle">Located in Ontario, Canada</p>
+  </div>
+
+  <div class="aboutView">
+    <div class="about-row" id="about-row1">
+      <h1 class="about-section-title">About us</h1>
+      <p id="about-description">{{aboutSectionDescription}}</p>
+    </div>
+    <div id="button-grid">
+      {{> aboutTabButton id="tab-btn1" src="images/missionSymbol.svg" link="/about/mission" text="Mission"}}
+      {{> aboutTabButton id="tab-btn2" src="" link="/about/history" text="History"}}
+      {{> aboutTabButton id="tab-btn3" src="images/bylawsSymbol.svg" link="/about/bylaws" text="Bylaws"}}
+      {{> aboutTabButton id="tab-btn4" src="" link="/about/board" text="Board"}}
+    </div>
+  </div>
+
+  <div class="eventsView">
+    <h1 class="events-title">Events</h1>
+    {{> eventPreview id="prev1" src="images/events-preview-image.jpg" href="/events/upcoming" month="Nov" date="30" eventTitle="Title of Event" seeMore="See All Upcoming Events"}}
+    {{> eventPreview id="prev2" src="images/events-preview-image.jpg" href="/events/past" month="Nov" date="17" eventTitle="Title of Event" seeMore="See All Past Events"}}
+  </div>
+
+  <div class="activitiesView">
+    <h1>Activities</h1>
+    <div class="activities-preview">
+    </div>
+  </div>
+
+  {{> pageFooter}}
+</template>
+
+<template name="aboutTabButton">
+  <div class="about-tab-button" id={{id}}>
+    <div class="tab-main">
+      <a href={{link}}> <div class="tab-btn-overlay"></div> </a>
+      <div>{{text}}</div>
+    </div>
+    <div class="tab-sub">
+      {{shortDescription}}
+    </div>
+  </div>
+</template>
+
+<template name="eventPreview">
+  <div class="event-preview-container" id={{id}}>
+    <img class="event-preview-image" src={{src}}>
+    <p1>{{eventTitle}}</p1>
+    <p2>{{month}} {{date}}</p2>
+    <a href={{href}} class="see-more-link">{{seeMore}}</a>
+  </div>
+</template>

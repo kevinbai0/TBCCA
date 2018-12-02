@@ -1,0 +1,177 @@
+.admin-page {
+  padding: 2vw;
+  display: flex;
+  flex-direction: column;
+}
+.admin-page>a {
+  padding-top: 10px;
+}
+
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  padding-top: 50px;
+}
+.form-element {
+  margin-top: 10px;
+}
+
+.form-title {
+  font-weight: 800;
+  font-size: calc(5px + 1.5vw);
+}
+.form-save-button {
+  width: 100px;
+}
+.form-image {
+  width: 25%;
+}
+#board-member-form {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 300px;
+  bottom: 0;
+  border: 1px solid black;
+  padding: 10px;
+  display: none;
+  background-color: orange;
+  text-align: center;
+}
+
+#newBoardMemberExitBtn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+#board-member-form>input {
+  width: 20vw;
+  display: inline-block;
+  background-color: inherit;
+  border: none;
+  border-bottom: 1px solid white;
+  text-decoration: none;
+}
+#board-member-form>input:focus {
+  outline: none;
+}
+#board-member-form>div {
+  display: inline-block;
+  width: 10vw;
+  text-align: right;
+}
+#board-member-form>button {
+}
+.board-member-form-element {
+  padding: 10px;
+}
+
+#addNewBoardMemberBtn {
+  width: 200px;
+}
+
+#boardMemberFormOverlay {
+  position: fixed;
+  display: none;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 300px;
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* board of directors section: grid layout*/
+.board-members-section {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-auto-rows: 1fr;
+  margin: 2vw;
+  grid-gap: 2vw;
+}
+
+.board-member-container {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.board-member-container>img {
+  width: 100%;
+  max-height: 500px;
+}
+
+/* events on the manageEvents page */
+.all-events-table {
+  margin-top: 30px;
+  width: 100%;
+}
+.all-events-table img {
+  max-height: 100px;
+}
+.all-events-table td, .all-events-table th {
+  padding: 10px;
+}
+.single-event-container {
+  border: 1px solid black;
+  padding: 10px;
+  margin-top: 20px;
+}
+/* New event form
+ * Starts here
+ */
+ .fake-button {
+   border: 1px solid black;
+   padding: 2px 5px 2px 5px;
+   user-select: none;
+   text-align: center;
+   border-radius: 5px;
+ }
+ .fake-button:hover {
+   background-color: rgb(200,200,200);
+ }
+.new-event-form>input {
+  margin-bottom: 30px;
+}
+.new-event-form>textarea {
+  margin-bottom: 30px;
+  width: 50vw;
+  height: 300px;
+}
+
+#imagesPreviewEventContainer {
+  /* grid layout */
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  grid-template-rows: 1fr;
+  grid-auto-rows: 1fr;
+  grid-gap: 2vw;
+  margin-bottom: 30px;
+}
+.single-image-and-description-preview-container {
+  display: flex;
+  flex-direction: column;
+}
+.single-image-and-description-preview-container>img {
+  height: 150px;
+  object-fit: contain;
+}
+
+/* video links */
+#videoLinkInputField {
+  margin: 10px 0 10px 10px;
+}
+
+#videoLinkInputsContainer {
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.video-link-element-container {
+  margin-top: 10px;
+}
+.video-link-remove-link-btn {
+  float: right;
+}

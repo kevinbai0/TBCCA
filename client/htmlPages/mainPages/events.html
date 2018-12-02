@@ -1,0 +1,49 @@
+<template name="eventsPage">
+  {{> navigationBar}}
+  <div class="events-page">
+    <div class="events-page-container">
+      <div class="events-header-container">
+        <h1 id="pastEventsHeader" style="color: {{headerColorPast}}">Past Events</h1>
+        <h1 id="upcomingEventsHeader" style="color: {{headerColorUpcoming}}">Upcoming Events</h1>
+      </div>
+
+      <!-- Display all events -->
+      <div class="events-scroll-container">
+        {{#each event}}
+          <div class="events-scroll-preview-item" id={{id}}>
+            <img class="events-scroll-preview-item-image" src={{mainImagePath}}>
+            <a>{{titleOfEvent}}</a>
+            <p>
+              {{date.month}} / {{date.day}} / {{date.year}}
+            </p>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+  {{> pageFooter}}
+</template>
+
+<template name="singleEventPage">
+  <div class="single-events-page">
+    <h2>Title of Event</h2>
+    <p1>November 30th, 2017</p1>
+    <p2>Lorem ipsum dolor sit amet, veniam eleifend duo
+      ut, vitae putent accommodare vim te. An qui prima solet posidonium. Ea modus dictas fabellas per. Tale "
+      deseruisse sea ut, quem movet ad duo, vis eu enim iisque graecis. Eum malis recusabo an, eam id reque tantas"
+      graeci. Facete molestiae vim eu, cum viris nostrum efficiantur eu. Mel autem oblique lucilius in, dolorum oporteat"
+      in pri, an decore integre intellegat mel. Mea an aliquam disputationi. Persequeris liberavisse qui at.</p2>
+    <div class="single-event-images">
+      <img src="images/events-preview-image.jpg">
+      <img src="images/events-preview-image.jpg">
+      <img src="images/events-preview-image.jpg">
+      <img src="images/events-preview-image.jpg">
+      <img src="images/events-preview-image.jpg">
+      <img src="images/events-preview-image.jpg">
+      <img src="images/events-preview-image.jpg">
+      <img src="images/events-preview-image.jpg">
+      <img src="images/events-preview-image.jpg">
+      <img src="images/events-preview-image.jpg">
+    </div>
+  </div>
+</template>
